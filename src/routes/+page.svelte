@@ -25,7 +25,7 @@
 		</div>
 		<div class="space-y-2">
 			<p>
-				Your big menu:
+				Development menu:
 				<a href="/about">About</a>
 			</p>
 			<p>Try editing the following:</p>
