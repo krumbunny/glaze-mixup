@@ -19,16 +19,15 @@
 		</figure>
 		<!-- / -->
 		<div class="flex justify-center space-x-2">
-			<a
-				class="btn btn-filled"
-				href="https://skeleton.dev/"
-				target="_blank"
-				rel="noreferrer"
-			>
+			<a class="btn btn-filled" href="https://skeleton.dev/" target="_blank" rel="noreferrer">
 				Launch Documentation
 			</a>
 		</div>
 		<div class="space-y-2">
+			<p>
+				Your big menu:
+				<a href="/about">About</a>
+			</p>
 			<p>Try editing the following:</p>
 			<p><code>/src/routes/+layout.svelte</code></p>
 			<p><code>/src/routes/+page.svelte</code></p>
@@ -46,8 +45,7 @@
 	}
 	.img-bg {
 		@apply absolute z-[-1] rounded-full blur-[50px] transition-all;
-		animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite,
-			glow 5s linear infinite;
+		animation: pulse 5s cubic-bezier(0, 0, 0, 0.5) infinite, glow 5s linear infinite;
 	}
 	@keyframes glow {
 		0% {
@@ -65,7 +63,7 @@
 	}
 	@keyframes pulse {
 		50% {
-			transform: scale(1.5);
+			transform: scale(2.5);
 		}
 	}
 </style>

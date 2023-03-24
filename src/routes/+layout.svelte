@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
 	// The ordering of these imports is critical to your app working properly
 	import '@skeletonlabs/skeleton/themes/theme-modern.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
@@ -46,4 +46,9 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+	<footer class="bg-gray-100 text-center text-gray-500 py-4">
+		<p>
+			<a href="https://skeletonlabs.dev" target="_blank" rel="noreferrer"> Skeleton Labs </a>
+		</p>
+	</footer>
 </AppShell>
