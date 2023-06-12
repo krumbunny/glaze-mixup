@@ -6,26 +6,34 @@ export const handler = init({
 	assets: new Set(["favicon.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":{"file":"_app/immutable/entry/start.65d8b581.js","imports":["_app/immutable/entry/start.65d8b581.js","_app/immutable/chunks/index.3cd0ed1c.js","_app/immutable/chunks/singletons.66f3015d.js","_app/immutable/chunks/index.ab7fd3f0.js"],"stylesheets":[],"fonts":[]},"app":{"file":"_app/immutable/entry/app.e70e5008.js","imports":["_app/immutable/entry/app.e70e5008.js","_app/immutable/chunks/index.3cd0ed1c.js"],"stylesheets":[],"fonts":[]}},
+		client: {"start":"_app/immutable/entry/start.47a2d281.js","app":"_app/immutable/entry/app.ca479d35.js","imports":["_app/immutable/entry/start.47a2d281.js","_app/immutable/chunks/index.2fd81e39.js","_app/immutable/chunks/singletons.1401a8a9.js","_app/immutable/chunks/index.cac35e6e.js","_app/immutable/entry/app.ca479d35.js","_app/immutable/chunks/index.2fd81e39.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			() => import('../server/nodes/0.js'),
 			() => import('../server/nodes/1.js'),
 			() => import('../server/nodes/2.js'),
-			() => import('../server/nodes/3.js')
+			() => import('../server/nodes/3.js'),
+			() => import('../server/nodes/4.js')
 		],
 		routes: [
 			{
 				id: "/",
 				pattern: /^\/$/,
 				params: [],
-				page: { layouts: [0], errors: [1], leaf: 2 },
+				page: { layouts: [0,], errors: [1,], leaf: 2 },
 				endpoint: null
 			},
 			{
 				id: "/about",
 				pattern: /^\/about\/?$/,
 				params: [],
-				page: { layouts: [0], errors: [1], leaf: 3 },
+				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				endpoint: null
+			},
+			{
+				id: "/info",
+				pattern: /^\/info\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
 				endpoint: null
 			}
 		],

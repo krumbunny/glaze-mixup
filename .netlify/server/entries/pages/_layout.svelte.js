@@ -4,42 +4,19 @@ const themeModern = "";
 const all = "";
 const app = "";
 const stores = {};
-function getStorage(type) {
-  return type === "local" ? localStorage : sessionStorage;
-}
 function localStorageStore(key, initialValue, options) {
-  const serializer = options?.serializer ?? JSON;
-  const storageType = options?.storage ?? "local";
-  const browser = typeof window !== "undefined" && typeof document !== "undefined";
-  function updateStorage(key2, value) {
-    if (!browser)
-      return;
-    getStorage(storageType).setItem(key2, serializer.stringify(value));
-  }
+  options?.serializer ?? JSON;
+  options?.storage ?? "local";
   if (!stores[key]) {
     const store = writable(initialValue, (set2) => {
-      const json = browser ? getStorage(storageType).getItem(key) : null;
-      if (json) {
-        set2(serializer.parse(json));
-      }
-      if (browser) {
-        const handleStorage = (event) => {
-          if (event.key === key)
-            set2(event.newValue ? serializer.parse(event.newValue) : null);
-        };
-        window.addEventListener("storage", handleStorage);
-        return () => window.removeEventListener("storage", handleStorage);
-      }
     });
     const { subscribe, set } = store;
     stores[key] = {
       set(value) {
-        updateStorage(key, value);
         set(value);
       },
       update(updater) {
         const value = updater(get_store_value(store));
-        updateStorage(key, value);
         set(value);
       },
       subscribe
@@ -50,7 +27,7 @@ function localStorageStore(key, initialValue, options) {
 localStorageStore("modeOsPrefers", false);
 localStorageStore("modeUserPrefers", void 0);
 localStorageStore("modeCurrent", false);
-const cBase = "flex flex-col space-y-4";
+const cBase = "flex flex-col";
 const cRowMain = "grid items-center";
 const cRowHeadline = "";
 const cSlotLead = "flex-none flex justify-between items-center";
@@ -129,7 +106,7 @@ const cSidebarLeft = "flex-none overflow-x-hidden overflow-y-auto";
 const cSidebarRight = "flex-none overflow-x-hidden overflow-y-auto";
 const AppShell = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let classesBase;
-  let classesheader;
+  let classesHeader;
   let classesSidebarLeft;
   let classesSidebarRight;
   let classesPageHeader;
@@ -162,7 +139,7 @@ const AppShell = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   if ($$props.slotFooter === void 0 && $$bindings.slotFooter && slotFooter !== void 0)
     $$bindings.slotFooter(slotFooter);
   classesBase = `${cBaseAppShell} ${$$props.class ?? ""}`;
-  classesheader = `${slotHeader}`;
+  classesHeader = `${slotHeader}`;
   classesSidebarLeft = `${cSidebarLeft} ${slotSidebarLeft}`;
   classesSidebarRight = `${cSidebarRight} ${slotSidebarRight}`;
   classesPageHeader = `${slotPageHeader}`;
@@ -170,7 +147,7 @@ const AppShell = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   classesPageFooter = `${slotPageFooter}`;
   classesFooter = `${slotFooter}`;
   return `<div id="appShell"${add_attribute("class", classesBase, 0)} data-testid="app-shell">
-	${$$slots.header ? `<header id="shell-header" class="${"flex-none " + escape(classesheader, true)}">${slots.header ? slots.header({}) : ``}</header>` : ``}
+	${$$slots.header ? `<header id="shell-header" class="${"flex-none " + escape(classesHeader, true)}">${slots.header ? slots.header({}) : ``}</header>` : ``}
 
 	
 	<div class="${"flex-auto " + escape(cContentArea, true)}">
@@ -202,14 +179,12 @@ ${validate_component(AppShell, "AppShell").$$render($$result, {}, {}, {
         trail: () => {
           return `<a class="btn btn-sm variant-ghost-surface" href="https://discord.gg/EXqV7W8MtY" target="_blank" rel="noreferrer">Discord
 				</a>
-				<a class="btn btn-sm variant-ghost-surface" href="https://twitter.com/SkeletonUI" target="_blank" rel="noreferrer">Twitter
-				</a>
 				<a class="btn btn-sm variant-ghost-surface" href="https://github.com/skeletonlabs/skeleton" target="_blank" rel="noreferrer">GitHub
 				</a>
 			`;
         },
         lead: () => {
-          return `<strong class="text-xl uppercase">Skeleton</strong>`;
+          return `<strong class="text-xl uppercase">Mixup</strong>`;
         }
       })}
 	`;
@@ -217,7 +192,7 @@ ${validate_component(AppShell, "AppShell").$$render($$result, {}, {}, {
     default: () => {
       return `
 	${slots.default ? slots.default({}) : ``}
-	<footer class="bg-gray-100 text-center text-gray-500 py-4"><p><a href="https://skeletonlabs.dev" target="_blank" rel="noreferrer">Skeleton Labs </a></p></footer>`;
+	<footer class="bg-gray-700 text-center text-gray-100 py-4"><p><a href="https://skeletonlabs.dev" target="_blank" rel="noreferrer">Skeleton Labs </a></p></footer>`;
     }
   })}`;
 });
