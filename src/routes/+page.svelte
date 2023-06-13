@@ -1,4 +1,7 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script>
+	import Table from '../lib/Table.svelte';
+	export let data;
+</script>
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center">
@@ -8,6 +11,9 @@
 				Launch Documentation
 			</a>
 		</div>
+
+		<Table users={data?.users} duration={data?.duration} />
+
 		<div class="space-y-2">
 			<p>
 				Here is a link:
