@@ -8,13 +8,22 @@ export async function GET({ url }) {
 
 	let searchResult = await prisma.users.findMany({
 		where: {
-			name: {
-				contains: searchText
-			}
+			OR: [
+				{
+					name: {
+						contains: searchText,
+						mode: 'insensitive'
+					}
+				},
+				{
+					email: {
+						contains: searchText,
+						mode: 'insensitive'
+					}
+				}
+			]
 		}
 	});
-
-	console.log(searchResult);
 
 	return json({ searchResult });
 }
