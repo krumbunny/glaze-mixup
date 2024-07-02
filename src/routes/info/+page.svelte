@@ -5,15 +5,11 @@
 	let searchResults: Array<any>;
 	let durration = '';
 
-	async function search(event: any) {
+	async function handleInput(event: any) {
+		let searchText = event.target.value;
 		const fetchStart = Date.now();
 
-		const res = await fetch(
-			'/api/search?' +
-				new URLSearchParams({
-					searchText: event.target.value as string
-				})
-		);
+		const res = await fetch('/api/search?' + new URLSearchParams({ searchText }));
 		const json = await res.json();
 
 		durration = ms(Date.now() - fetchStart);
@@ -23,7 +19,11 @@
 
 <div class="container h-full mx-auto flex justify-center">
 	<div class="space-y-6 mt-60">
-		<input type="text" class="border border-gray-300 rounded-md p-2 text-black" on:input={search} />
+		<input
+			type="text"
+			class="border border-gray-300 rounded-md p-2 text-black"
+			on:input={handleInput}
+		/>
 		<p class="font-bold">What I got is:</p>
 
 		{#if searchResults && searchResults.length > 0}

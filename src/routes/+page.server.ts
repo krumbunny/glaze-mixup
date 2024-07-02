@@ -41,19 +41,17 @@ async function seed() {
 	};
 }
 
+const prisma = new PrismaClient();
+
 export async function load() {
-	const db = createPool();
 	const startTime = Date.now();
-	const prisma = new PrismaClient();
 
 	try {
 		const users = await prisma.users.findMany();
 		const duration = Date.now() - startTime;
-		return {
-			users: users,
-			duration: duration
-		};
+		return { users, duration };
 	} catch (error) {
+		const db = createPool();
 		const dbError = error as any;
 		if (dbError.message === `relation "users" does not exist`) {
 			console.log('Table does not exist, creating and seeding it with dummy data now...');
@@ -61,10 +59,7 @@ export async function load() {
 			await seed();
 			const { rows: users } = await db.query('SELECT * FROM users');
 			const duration = Date.now() - startTime;
-			return {
-				users: users,
-				duration: duration
-			};
+			return { users, duration };
 		} else {
 			throw error;
 		}
