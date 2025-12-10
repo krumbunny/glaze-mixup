@@ -9,11 +9,12 @@
 </p>
 
 <div>
-  <h2>Add User later</h2>
+  <h2>Add User</h2>
+  <p>TODO: Add a form to add a user</p>
 </div>
 
 <div>
-  <h2>Users where are you</h2>
+  <h2>Current Users</h2>
   <ul>
     {#each await getUsers() as { id, name, email }}
       <li>user: {id} - {name} - {email}</li>
