@@ -1,10 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @plugin "@tailwindcss/typography";
 
-@import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
+
+/* Example usage: Add a custom class for Rock Salt or apply to headings, etc. */
+.font-rock-salt {
+  font-family: "Rock Salt", cursive;
+}
 
 :root {
   --radius: 0.625rem;
