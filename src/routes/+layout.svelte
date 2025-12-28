@@ -10,7 +10,9 @@
   <link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="fixed inset-0 m-0 p-0 min-h-screen min-w-full bg-gray-100">
+<div class="min-h-screen bg-gray-100 flex flex-col">
   <Header user={data.user} />
-  {@render children()}
+  <main class="flex-1 overflow-y-auto">
+    {@render children()}
+  </main>
 </div>
