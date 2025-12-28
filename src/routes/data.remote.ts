@@ -1,7 +1,6 @@
-import { query } from "$app/server";
+import { query, getRequestEvent } from "$app/server";
 import { db } from "$lib/db";
 import { users } from "$lib/db/schema";
-import { getRequestEvent } from "@app/server";
 
 export const getUsers = query(async () => {
   const usersData = await db.select().from(users);
