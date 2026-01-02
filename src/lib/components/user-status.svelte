@@ -14,6 +14,10 @@
 
   let user = getContext<() => User | null>("user");
 
+  function firstName(name: string) {
+    return name.split(" ")[0];
+  }
+
   async function logout() {
     await goto("/");
     signOut();
@@ -25,7 +29,7 @@
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Button variant="outline">
-          {user()?.name || "Unknown"}
+          {firstName(user()?.name || "Unknown")}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
