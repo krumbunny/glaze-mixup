@@ -16,28 +16,23 @@
 
   <div>
     {#if data.session}
-      <Button variant="outline" onclick={() => signOut()}>Sign out</Button>
+      <Button variant="outline" onclick={() => signOut()}>
+        Sign out
+      </Button>
       <pre>Session: {JSON.stringify(data.session, null, 2)}</pre>
       {#if data.session.user}
-        <p>user image URL is: {data.session.user.image}</p>
+        <p>User image URL is: {data.session.user.image}</p>
         <img src={data.session.user.image} alt="User Avatar" />
-      {/if}
-      {#if data.user}
-        <p>user name is: {data.user.name}</p>
-        {#if data.newUser}
-          <p>This is a new user</p>
-        {/if}
+        <p>user name is: {data.session.user.name}</p>
+        <p>user id is: {data.session.user.id}</p>
+      {:else}
+        <p>No user found</p>
       {/if}
     {:else}
-      <Button variant="outline" onclick={() => signIn("google")}
-        >Sign in with Google</Button
-      >
+      <Button variant="outline" onclick={() => signIn("google")}>
+        Sign in with Google
+      </Button>
     {/if}
-  </div>
-
-  <div>
-    <h2>Add User</h2>
-    <p>TODO: Add a form to add a user</p>
   </div>
 
   <div>

@@ -41,6 +41,8 @@
     "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.45.1",
     "next-auth": "5.0.0-beta.30",
-    "tailwindcss": "^4.1.18"
+    "shadcn-svelte": "1.1.0",
+    "tailwindcss": "^4.1.18",
+    "valibot": "^1.2.0"
   }
 }

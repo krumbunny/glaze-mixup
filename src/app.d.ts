@@ -10,4 +10,18 @@ declare global {
 	}
 }
 
+declare module "@auth/sveltekit" {
+	interface Session {
+		user: {
+		id: number; // matches schema INTEGER PRIMARY KEY
+		} & DefaultSession["user"]
+	}
+}
+
+declare module "@auth/core/jwt" {
+	interface JWT {
+		userId?: number;
+	}
+}
+  
 export {};
